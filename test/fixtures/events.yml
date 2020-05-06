@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 
+  start_date: 2020-05-06 23:53:31
+  price: 1.5
+  venue: MyText
+
+two:
+  title: 
+  start_date: 2020-05-06 23:53:31
+  price: 1.5
+  venue: MyText
