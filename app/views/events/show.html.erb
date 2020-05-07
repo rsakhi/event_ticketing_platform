@@ -1,2 +1,17 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<%= render "shared/header" %>
+<div>
+  <h3>Event Details</h3>
+  <ul>
+    <li>Title: <%= @event.title%></li>
+    <li>Date: <%= @event.start_date.strftime("%F")%></li>
+    <li>Price: <%= @event.price%></li>
+    <li>Venue: <%= @event.venue%></li>
+    <li>Totle Number of geuest: <%= @event.users.count %></li>
+  </ul>
+  <div>Guest List </div>
+  <% @event.users.each do |user| %>
+    <ul>
+      <li><%=user.name%>
+    </ul>
+  <% end%>
+</div>

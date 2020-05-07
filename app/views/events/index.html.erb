@@ -1,2 +1,28 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<%= render "shared/header" %>
+<div class="event">
+  <div class=title>Event List</div>
+  <% @event.each do |event| %>
+  <div>
+    <ul>
+      <li class="flex-2"><%= event.title %><li>
+      <li class="flex-1"><%= event.price %><li>
+      <li class="flex-2"><%= event.start_date.strftime("%F") %><li>
+      <li class="flex-2"><%= event.venue %><li>
+      <li class="flex-2"><%= link_to('View', { action: :show, id: event.id }, method: :get) %></li>
+      <% if current_user.role == 'admin' %>
+        <li class="button">
+          <%= link_to('Delete', { action: :destroy, id: event.id }, method: :delete) %>
+        </li>
+      <% else %>
+        <% if is_register event%>
+          <li class="button secondry">  <%= link_to('Reject', { action: :reject, id: event.id }, method: :delete) %></li>
+        <% else%>
+          <li class="button primary"> <%= link_to('Accept', { action: :accept, id: event.id }, method: :post) %></li>
+        <%end%>
+      <%end%>
+    </ul>
+    </div>
+<%end%>
+</div>
+
+

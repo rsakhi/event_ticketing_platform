@@ -1,0 +1,14 @@
+<div class="header">
+  <ul>
+    <li class="logo">
+      <img src="<%= image_path 'Webp.net-resizeimage.jpg' %>"alt='image'>
+    </li> 
+    <li class="text"> Event <li>
+    <li>Welcome <%= current_user.name %></li>
+    <% if current_user.role == 'admin'%>
+      <li><%= link_to(' Create Event', new_event_path) %> </li>
+      
+    <% end %>
+    <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+  </ul>
+</div>
