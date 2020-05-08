@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+<div class="login-modal">
+  <div class="title"> Create Event</div>
+  <%= form_with(model: @event, url: "/events", method: "post", local: true) do |f|%>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :start_date %><br />
+      <%= f.datetime_select :start_date, ampm: true, order: [:day, :month, :year], start_year: 2020 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :price %><br />$
+      <%= f.number_field :price, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :venue %><br />
+      <%= f.text_field :venue, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add Event", :class => 'button'%>
+    </div>
+  <% end %>
+</div>

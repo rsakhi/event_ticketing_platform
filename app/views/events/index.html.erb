@@ -1,0 +1,40 @@
+<%= render "shared/header" %>
+<div class="event">
+  <div class=title>Event List</div>
+  <ul style="background-color: #c9e8c9">
+    <li class="flex-2">Title<li>
+    <li class="flex-1">Price<li>
+    <li class="flex-1">Date<li>
+    <li class="flex-1">Venue<li>
+    <li class="flex-1">Info<li>
+    <li class="button flex-1">-<li>
+  </ul>
+  <% @event.each do |event| %>
+    <ul>
+      <li class="flex-2"><%= event.title %><li>
+      <li class="flex-1 tooltip">$<%= get_price(event.price).html_safe%>
+        <span class="tooltiptext">5% off for female members</span>
+      <li>
+      <li class="flex-1"><%= event.start_date.strftime("%F") %><li>
+      <li class="flex-1"><%= event.venue %><li>
+      <li class="flex-1"><%= link_to('View', { action: :show, id: event.id }, method: :get) %></li>
+      <% if current_user.role == 'admin' %>
+        <li class="button flex-1">
+          <%= link_to('Delete', { action: :destroy, id: event.id }, method: :delete) %>
+        </li>
+      <% else %>
+        <% if is_avtive event %>
+          <% if is_register event%>
+            <li class="button secondry flex-1">  <%= link_to('Reject', { action: :reject, id: event.id }, method: :delete) %></li>
+          <% else%>
+            <li class="button primary flex-1"> <%= link_to('Accept', { action: :accept, id: event.id }, method: :post) %></li>
+          <%end%>
+        <%else%>
+          <li class="button info flex-1">Expired</li>
+        <%end%>
+      <%end%>
+    </ul>
+<%end%>
+</div>
+
+

@@ -1,0 +1,70 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.event {
+  .title {
+    font-size: 35px;
+    font-weight: 500;
+    margin: 25px;
+  }
+  ul {
+    display: flex;
+    li {
+      display: inline;
+    }
+    .flex-1 {
+      flex: .16;
+      text-align:  center;
+    }
+    .flex-2 {
+      flex: .2;
+    }
+    
+    .button {
+      height: 35px;
+      width: 10%;
+      border-radius: 3px;
+      cursor: pointer;
+      margin: 0px 25px;
+      text-align: center;
+    }
+    .primary {
+      background-color: #03AEB8;
+    }
+    .secondry {
+      border: 1px solid #03AEB8;
+      background-color: transparent;
+    }
+    .info {
+      border: 1px solid #03AEB8;
+      background-color: transparent;
+      cursor: no-drop;
+    }
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: black;
+    color: #314857;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #03AEB8;
+    background-color: #ffffff;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+}
