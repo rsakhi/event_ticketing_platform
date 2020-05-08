@@ -4,14 +4,17 @@
   <ul>
     <li>Title: <%= @event.title%></li>
     <li>Date: <%= @event.start_date.strftime("%F")%></li>
-    <li>Price: <%= @event.price%></li>
+    <li>Price $: <%= get_price(@event.price).html_safe%></li>
     <li>Venue: <%= @event.venue%></li>
     <li>Totle Number of geuest: <%= @event.users.count %></li>
   </ul>
   <div>Guest List </div>
   <% @event.users.each do |user| %>
     <ul>
-      <li><%= user.name %>
+      <li>
+        <span style="margin-right: 50px"> <%= user.name %></span>
+        <span> <%= user.gender %></span>
+      </li> 
     </ul>
   <% end%>
 </div>

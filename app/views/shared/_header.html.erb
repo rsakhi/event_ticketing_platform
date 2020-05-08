@@ -7,7 +7,6 @@
     <li>Welcome <%= current_user.name %></li>
     <% if current_user.role == 'admin'%>
       <li><%= link_to(' Create Event', new_event_path) %> </li>
-      
     <% end %>
     <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
   </ul>
