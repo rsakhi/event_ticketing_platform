@@ -36,19 +36,25 @@ class EventsController < ApplicationController
   def edit
   end
 
-  def my_events
-    @event = current_user.events
-  end
-
   def reject
+    event = Attendee.find_by(user_id: current_user, event_id: params[:id])
+    if event && event.destroy
+      flash[:success] = "Event rejected successfully"
+      redirect_to events_path
+    else
+      flash.now[:error] = "something went wrong" 
+      render :index
+    end
   end
 
   def accept
-    binding.pry
     event = current_user.attendees.new(event_id: params[:id])
     if event.save
+      flash[:success] = "Event accepted successfully"
       redirect_to events_path
     else
+      flash.now[:error] = "something went wrong" 
+      render :index
     end
   end
 

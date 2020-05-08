@@ -5,6 +5,6 @@ module EventsHelper
   end
 
   def is_avtive event
-    Date.today > event.start_date
+    event.start_date.future?
   end
 end
