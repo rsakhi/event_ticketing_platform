@@ -1,6 +1,13 @@
+<%= render "shared/header" %>
+
+<% flash.each do |type, msg| %>
+  <div class="alert">
+    <div class="alert-<%=type%>"> <%= msg %></div>
+  </div>
+<% end %>
 <div class="login-modal">
   <div class="title"> Create Event</div>
-  <%= form_with(model: @event, url: "/events", method: "post") do |f|%>
+  <%= form_with(model: @event, url: "/events", method: "post", local: true) do |f|%>
 
     <div class="field">
       <%= f.label :title %><br />

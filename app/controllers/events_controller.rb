@@ -14,8 +14,10 @@ class EventsController < ApplicationController
     @event = Event.new(param)
     @event.start_date = getDate(param)
     if @event.save
+      flash[:success] = "Event created successfully"
       redirect_to events_path
     else
+      flash.now[:error] = @event.errors.full_messages.join(',')
       render :new
     end
   end
@@ -27,6 +29,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find params[:id]
     event.destroy
+    flash[:success] = "Event deleted successfully"
     redirect_to events_path
   end
 

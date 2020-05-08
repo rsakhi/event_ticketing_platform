@@ -1,4 +1,11 @@
 <%= render "shared/header" %>
+
+<% flash.each do |type, msg| %>
+  <div class="alert">
+    <div class="alert-<%=type%>"> <%= msg %></div>
+  </div>
+<% end %>
+
 <div class="event">
   <div class=title>Event List</div>
   <% @event.each do |event| %>
@@ -14,10 +21,14 @@
           <%= link_to('Delete', { action: :destroy, id: event.id }, method: :delete) %>
         </li>
       <% else %>
-        <% if is_register event%>
-          <li class="button secondry">  <%= link_to('Reject', { action: :reject, id: event.id }, method: :delete) %></li>
-        <% else%>
-          <li class="button primary"> <%= link_to('Accept', { action: :accept, id: event.id }, method: :post) %></li>
+        <% if is_avtive event %>
+          <% if is_register event%>
+            <li class="button secondry">  <%= link_to('Reject', { action: :reject, id: event.id }, method: :delete) %></li>
+          <% else%>
+            <li class="button primary"> <%= link_to('Accept', { action: :accept, id: event.id }, method: :post) %></li>
+          <%end%>
+        <%else%>
+          <li class="button info">Expired</li>
         <%end%>
       <%end%>
     </ul>

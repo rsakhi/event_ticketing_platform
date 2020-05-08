@@ -3,7 +3,7 @@
     <li class="logo">
       <img src="<%= image_path 'Webp.net-resizeimage.jpg' %>"alt='image'>
     </li> 
-    <li class="text"> Event <li>
+    <li class="text"><%= link_to('Event', root_path) %></li>
     <li>Welcome <%= current_user.name %></li>
     <% if current_user.role == 'admin'%>
       <li><%= link_to(' Create Event', new_event_path) %> </li>

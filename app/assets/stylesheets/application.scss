@@ -32,6 +32,15 @@
   line-height: 29px;
 }
 
+.alert {
+  .alert-success{
+    background-color: #c3e4c3;
+  }
+  .alert-error{
+    background-color: red;
+  }
+}
+
 .login-modal {
   margin: 25px auto;
   height: auto;
